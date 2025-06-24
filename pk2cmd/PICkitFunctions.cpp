@@ -2982,6 +2982,13 @@ void CPICkitFunctions::timerPrint(void)
 	if (usePercentTimer)
 	{
 		timerValue += timerIncrement;
+
+        // Ensure percentage cannot exceed 100%
+        if (timerValue > 100)
+        {
+            timerValue = 100;
+        }
+
 		if ((int)lastTimerValue != (int)timerValue)
 		{
             lastTimerValue = timerValue; // only print when the % changes
